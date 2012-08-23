@@ -13,7 +13,7 @@ public class Test {
     public static void main(String[] args) throws JMSException, Exception {
         // TODO Auto-generated method stub
         ConsumerTool consumer = new ConsumerTool();
-        ProducerTool producer = new ProducerTool();
+
         // 开始监听
         consumer.consumeMessage();
         ExecutorService executorService = Executors.newFixedThreadPool(2);

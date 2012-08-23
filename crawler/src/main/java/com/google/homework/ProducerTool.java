@@ -40,7 +40,6 @@ public class ProducerTool implements Runnable {
     public void produceMessage(String message) throws JMSException, Exception {
         initialize();
         TextMessage msg = session.createTextMessage(message);
-        connection.start();
         System.out.println("Producer:->Sending message: " + message);
         producer.send(msg);
         System.out.println("Producer:->Message sent complete!");
@@ -58,6 +57,11 @@ public class ProducerTool implements Runnable {
     }
 
     public void run() {
+        try {
+            connection.start();
+        } catch (JMSException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         while (true) {
             try {
                 produceMessage("this the message " + Thread.currentThread().getId());
