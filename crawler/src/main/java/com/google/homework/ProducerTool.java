@@ -5,7 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class ProducerTool {
+public class ProducerTool implements Runnable {
 
     private String user = ActiveMQConnection.DEFAULT_USER;
 
@@ -55,5 +55,17 @@ public class ProducerTool {
             session.close();
         if (connection != null)
             connection.close();
+    }
+
+    public void run() {
+        while (true) {
+            try {
+                produceMessage("this the message " + Thread.currentThread().getId());
+                Thread.sleep(10);
+            } catch (Exception e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+
+        }
     }
 }

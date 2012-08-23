@@ -1,8 +1,9 @@
 package com.google.homework;
 
 import javax.jms.JMSException;
-
-import static java.lang.Thread.sleep;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Test {
 
@@ -15,13 +16,16 @@ public class Test {
         ProducerTool producer = new ProducerTool();
         // 开始监听
         consumer.consumeMessage();
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
 
-        while (true) {
-            // 延时500毫秒之后发送消息
-            sleep(10);
-            producer.produceMessage("Hello, world!");
-            producer.close();
+        for (int i = 0; i < 20; i++) {
+            executorService.execute(new ProducerTool());
         }
+
+        while (!executorService.awaitTermination(10, TimeUnit.MINUTES)) {
+
+        }
+
 
         // 延时500毫秒之后停止接受消息
         //sleep(500);
