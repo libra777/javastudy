@@ -16,9 +16,9 @@ public class Test {
         ProducerTool producer = new ProducerTool();
         // 开始监听
         consumer.consumeMessage();
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             executorService.execute(new ProducerTool());
         }
 
