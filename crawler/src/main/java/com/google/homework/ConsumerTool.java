@@ -5,7 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class ConsumerTool implements MessageListener {
+public class ConsumerTool implements MessageListener, Runnable {
 
     private String user = ActiveMQConnection.DEFAULT_USER;
 
@@ -64,12 +64,21 @@ public class ConsumerTool implements MessageListener {
                 TextMessage txtMsg = (TextMessage) message;
                 String msg = txtMsg.getText();
                 System.out.println("Consumer:->Received: " + msg);
+                //message.acknowledge();
             } else {
                 System.out.println("Consumer:->Received: " + message);
             }
         } catch (JMSException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+    }
+
+    public void run() {
+        try {
+            this.consumeMessage();
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 }

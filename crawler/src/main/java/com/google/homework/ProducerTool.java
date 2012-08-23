@@ -39,11 +39,9 @@ public class ProducerTool implements Runnable {
 
     // 发送消息
     public void produceMessage(String message) throws JMSException, Exception {
-        initialize();
         TextMessage msg = session.createTextMessage(message);
         System.out.println("Producer:->Sending message: " + message);
         producer.send(msg);
-        System.out.println("Producer:->Message sent complete!");
     }
 
     // 关闭连接

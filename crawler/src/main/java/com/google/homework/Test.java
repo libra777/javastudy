@@ -11,14 +11,10 @@ public class Test {
      * @param args
      */
     public static void main(String[] args) throws JMSException, Exception {
-        // TODO Auto-generated method stub
-        ConsumerTool consumer = new ConsumerTool();
 
-        // 开始监听
-        consumer.consumeMessage();
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(500);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 500; i++) {
             executorService.execute(new ProducerTool());
         }
 
