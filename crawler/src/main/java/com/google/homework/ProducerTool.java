@@ -34,6 +34,7 @@ public class ProducerTool implements Runnable {
         destination = session.createQueue(subject);
         producer = session.createProducer(destination);
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+        connection.start();
     }
 
     // 发送消息
@@ -58,8 +59,10 @@ public class ProducerTool implements Runnable {
 
     public void run() {
         try {
-            connection.start();
+            initialize();
         } catch (JMSException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         while (true) {
