@@ -17,7 +17,17 @@ public class Test {
         System.out.println(object);
         QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) object;
         QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
+        queueConnection.start();
         QueueSession queueSession = queueConnection.createQueueSession(true, Session.AUTO_ACKNOWLEDGE);
 
+        Queue queue = (Queue) initialContext.lookup("target");
+
+        QueueReceiver queueReceiver = queueSession.createReceiver(queue);
+        queueReceiver.setMessageListener(new Recer());
+
+        QueueSender queueSender = queueSession.createSender(queue);
+        Message message = queueSession.createMessage();
+        queueSender.send(message);
+        queueConnection.close();
     }
 }
