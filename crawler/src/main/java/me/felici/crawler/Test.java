@@ -9,25 +9,20 @@ import javax.naming.NamingException;
  * Date: 12-8-24
  */
 public class Test {
-    public static void main(String[] args) throws NamingException, JMSException {
+    public static void main(String[] args) throws NamingException, JMSException, InterruptedException {
         InitialContext initialContext = new InitialContext();
-        System.out.println(initialContext);
-
-        Object object = initialContext.lookup("hello");
-        System.out.println(object);
-        QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) object;
+        Queue queue = (Queue) initialContext.lookup("target");
+        QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) initialContext.lookup("hello");
         QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
         queueConnection.start();
-        QueueSession queueSession = queueConnection.createQueueSession(true, Session.AUTO_ACKNOWLEDGE);
-
-        Queue queue = (Queue) initialContext.lookup("target");
-
-        QueueReceiver queueReceiver = queueSession.createReceiver(queue);
-        queueReceiver.setMessageListener(new Recer());
-
+        QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
         QueueSender queueSender = queueSession.createSender(queue);
-        Message message = queueSession.createMessage();
-        queueSender.send(message);
-        queueConnection.close();
+
+        while (true) {
+            Message me = queueSession.createTextMessage("hello");
+            queueSender.send(me);
+            Thread.sleep(10l);
+        }
+
     }
 }
