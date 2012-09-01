@@ -31,7 +31,7 @@
     </target>
 
     <target name="test" description="" depends="crawler-from-maven.compile">
-        <java classname="me.felici.crawler.Test">
+        <java classname="me.felici.crawler.App">
             <classpath refid="build.classpath"></classpath>
             <classpath path="${maven.build.outputDir}"></classpath>
         </java>

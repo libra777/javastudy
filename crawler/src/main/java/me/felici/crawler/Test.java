@@ -21,7 +21,7 @@ public class Test {
         while (true) {
             Message me = queueSession.createTextMessage("hello");
             queueSender.send(me);
-            Thread.sleep(10l);
+            Thread.sleep(1000l);
         }
 
     }
