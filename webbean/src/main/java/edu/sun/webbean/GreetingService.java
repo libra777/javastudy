@@ -18,51 +18,15 @@
 */
 package edu.sun.webbean;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.util.Date;
-import java.util.List;
 
 @Named
-@ApplicationScoped
+@RequestScoped
 public class GreetingService {
-
-    private String name;
-
-    @Inject
-    private LoginUser loginUser;
-
-    @Inject
-    private List<String> values;
-
-    public List<String> getValues() {
-        return values;
-    }
-
-    public void setValues(List<String> values) {
-        this.values = values;
-    }
-
-    public LoginUser getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(LoginUser loginUser) {
-        this.loginUser = loginUser;
-    }
+    private String name = "sunqipeng";
 
     public String getName() {
-        if (loginUser == null)
-            name = "the login user object is null";
-        else {
-            name = loginUser.getName() + " the preview is the login's name value " + new Date();
-        }
-
-        if (values == null)
-            name += " the value list is null";
-        else
-            name += " the value list size " + values.size();
         return name;
     }
 
@@ -70,12 +34,7 @@ public class GreetingService {
         this.name = name;
     }
 
-    public String createGreeting(String name) {
-        return "Hello " + name + ". We hope you enjoy Apache MyFaces!";
+    public void hello() {
+        name = "this is the name";
     }
-
-    public void test() {
-        this.name = "the name is changed " + new Date();
-    }
-
 }
