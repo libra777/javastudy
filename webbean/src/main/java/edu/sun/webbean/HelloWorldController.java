@@ -19,8 +19,11 @@
 package edu.sun.webbean;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A typical simple backing bean, that is backed to <code>helloWorld.xhtml</code>
@@ -28,6 +31,16 @@ import javax.inject.Named;
 @Named("helloWorld")
 @RequestScoped
 public class HelloWorldController {
+
+
+    @Produces
+    @Named("exampleList")
+    public List<String> createList() {
+        List<String> list = new ArrayList<String>();
+        for (int i = 0; i < 10; i++)
+            list.add("string" + i);
+        return list;
+    }
 
     //properties
     private String name;

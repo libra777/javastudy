@@ -21,12 +21,14 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
         >
 <h:head>
     <title>Hello World</title>
 </h:head>
 <h:body>
     <h:outputStylesheet name="style.css" library="css"/>
+
     <div id="container">
         <h1>MyFaces Hello World</h1>
         <h:form id="mainForm">
@@ -36,7 +38,20 @@
                 <h:commandButton value="Press me" action="#{helloWorld.send}"/>
                 <h:messages showDetail="true" showSummary="false"/>
             </h:panelGrid>
+
         </h:form>
+        <h:form>
+            <h:commandButton value="提交" action="#{greetingService.test}">
+                <f:ajax render="dislanbel"></f:ajax>
+            </h:commandButton>
+            <h:outputText id="dislanbel" value="#{greetingService.name}"></h:outputText>
+        </h:form>
+
+        <h:dataTable value="#{greetingService.values}" var="a">
+            <h:column>
+                ${a} this is a test for list
+            </h:column>
+        </h:dataTable>
     </div>
 </h:body>
 </html>
