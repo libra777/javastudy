@@ -18,15 +18,13 @@
 */
 package edu.sun.webbean;
 
-import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 @Named
 @ApplicationScoped
-public class GreetingService
-{
-    public String createGreeting(String name)
-    {
+public class GreetingService {
+    public String createGreeting(String name) {
         return "Hello " + name + ". We hope you enjoy Apache MyFaces!";
     }
 
