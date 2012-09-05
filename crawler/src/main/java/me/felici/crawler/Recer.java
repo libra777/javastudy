@@ -5,6 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * User: sunqipeng
@@ -13,6 +14,7 @@ import java.util.concurrent.Executors;
 public class Recer implements MessageListener, Runnable {
     public void onMessage(Message message) {
         try {
+
             System.out.printf("thread %d rec a message, message id %s\n", Thread.currentThread().getId(),
                     message.getJMSMessageID());
         } catch (JMSException e) {
@@ -20,11 +22,15 @@ public class Recer implements MessageListener, Runnable {
         }
     }
 
-    public static void main(String[] args) throws NamingException, JMSException {
+    public static void main(String[] args) throws NamingException, JMSException, InterruptedException {
         ExecutorService es = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 10; i++) {
             es.execute(new Recer());
         }
+        es.shutdown();
+        while (!es.awaitTermination(10, TimeUnit.SECONDS)) {
+        }
+        System.out.println("app exist");
     }
 
     public void run() {

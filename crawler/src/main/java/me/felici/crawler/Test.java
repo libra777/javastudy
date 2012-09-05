@@ -22,6 +22,7 @@ public class Test {
             Message me = queueSession.createTextMessage("hello");
             queueSender.send(me);
             Thread.sleep(1000l);
+            System.out.println("sending message");
         }
 
     }
