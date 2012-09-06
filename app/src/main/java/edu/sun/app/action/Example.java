@@ -1,10 +1,11 @@
 package edu.sun.app.action;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * Date: 12-9-6
  */
 @Component(value = "example")
-@RequestScoped
+@Scope("session")
 public class Example {
 
     private List<String> names = new ArrayList<String>();
@@ -34,10 +35,22 @@ public class Example {
         this.names = names;
     }
 
+    public String address;
+
     public void hello() {
         if (StringUtils.hasText(name)) {
             this.names.add(name);
         }
 
+        address = new Date().toString();
+
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

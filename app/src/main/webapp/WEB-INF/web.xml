@@ -33,7 +33,7 @@
 
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
-        <url-pattern>/spring/</url-pattern>
+        <url-pattern>/sp/</url-pattern>
     </servlet-mapping>
 
     <context-param>
@@ -47,8 +47,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
+        <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
-
-
 </web-app>
