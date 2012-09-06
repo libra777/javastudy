@@ -44,6 +44,13 @@ public class TaskHome {
             tasks = taskDao.list();
         }
         return tasks;
+    }
 
+    public String main() {
+        return "main";
+    }
+
+    public String adminMain() {
+        return "admin/main";
     }
 }

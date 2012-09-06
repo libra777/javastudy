@@ -38,10 +38,13 @@
             </h:commandButton>
             <h:dataTable value="#{example.names}" var="n" id="distable">
                 <h:column>
-                    value #{n}
+                    #{n}
                 </h:column>
 
             </h:dataTable>
+            <br></br>
+            <h:commandButton action="#{taskHome.main}" value="Main Page"></h:commandButton>
+            <h:commandButton action="#{taskHome.adminMain}" value="Admin Main Page"></h:commandButton>
         </h:form>
     </ui:define>
 </ui:composition>

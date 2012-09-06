@@ -3,6 +3,7 @@ package edu.sun.app.action;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * Date: 12-9-6
  */
 @Component(value = "example")
+@RequestScoped
 public class Example {
 
     private List<String> names = new ArrayList<String>();
