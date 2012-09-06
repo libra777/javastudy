@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Date: 12-9-6
  */
 @Controller
-@RequestMapping("/sp/*")
+@RequestMapping("/spring/*")
 public class SpringController {
 
     @RequestMapping("index")
     public String index() {
         System.out.println("this is the function invoke");
-        return "spring/index.jsp";
+        return "/spring/index";
     }
 }
