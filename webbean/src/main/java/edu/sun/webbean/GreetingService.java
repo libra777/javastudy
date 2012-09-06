@@ -18,8 +18,12 @@
 */
 package edu.sun.webbean;
 
+import edu.sun.webbean.entity.LoginUser;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 @Named
 @RequestScoped
@@ -36,6 +40,11 @@ public class GreetingService {
     }
 
     public void hello() {
-        name = "this is the name";
+        EntityManager entityManager = Persistence.createEntityManagerFactory("acme").createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(new LoginUser());
+        entityManager.getTransaction().commit();
+
+        name = "the value is saved";
     }
 }
