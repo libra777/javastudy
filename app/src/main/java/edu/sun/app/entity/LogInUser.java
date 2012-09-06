@@ -1,9 +1,6 @@
 package edu.sun.app.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * User: sunqipeng
@@ -11,7 +8,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_loginuser")
-public class LogInUser {
+public class LoginUser {
 
     @Id
     @GeneratedValue
@@ -21,6 +18,17 @@ public class LogInUser {
     private String email;
     private String answer;
     private String question;
+
+    @OneToOne(mappedBy = "loginUser")
+    private ContactInfo contactInfo;
+
+    public ContactInfo getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(ContactInfo contactInfo) {
+        this.contactInfo = contactInfo;
+    }
 
     public String getAnswer() {
         return answer;
