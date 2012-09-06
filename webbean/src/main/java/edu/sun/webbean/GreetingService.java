@@ -24,6 +24,7 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class GreetingService {
+
     private String name = "sunqipeng";
 
     public String getName() {

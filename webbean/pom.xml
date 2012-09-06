@@ -31,26 +31,6 @@
     <description>A custom project using MyFaces 2.0 and OpenWebBeans</description>
     <url>http://www.myorganization.org</url>
 
-    <!-- Instructions 
-      - Run using jetty 
-          mvn clean jetty:run
-          mvn clean -Dcontainer=jetty-mojarra jetty:run
-          Set your browser to http://localhost:8080/webbean
-      - Run using tomcat
-          mvn clean -Dcontainer=tomcat7 tomcat:run
-          Set your browser to http://localhost:8080/webbean
-      - Run war using tomcat
-          mvn clean -Dcontainer=tomcat7 tomcat:run-war
-          Set your browser to http://localhost:8080/webbean
-      - Run war using jetty (remove <webApp> config inside plugin config first)
-          mvn clean jetty:run-war
-          mvn clean -Dcontainer=jetty-mojarra jetty:run-war
-          Set your browser to http://localhost:8080
-      - Build war and bundle JSF jars 
-          mvn clean -Pbundle-myfaces install
-          mvn clean -Pbundle-mojarra install
-     -->
-
     <properties>
         <jsf-myfaces.version>2.1.7</jsf-myfaces.version>
         <jsf-mojarra.version>2.1.7</jsf-mojarra.version>
