@@ -1,4 +1,4 @@
-package edu.sun.app.model;
+package edu.sun.app.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "t_task")
 public class Task {
 
     @Id

@@ -1,6 +1,6 @@
 package edu.sun.app.bean;
 
-import edu.sun.app.model.Task;
+import edu.sun.app.entity.Task;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

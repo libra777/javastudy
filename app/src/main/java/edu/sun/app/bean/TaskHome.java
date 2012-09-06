@@ -1,6 +1,6 @@
 package edu.sun.app.bean;
 
-import edu.sun.app.model.Task;
+import edu.sun.app.entity.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
