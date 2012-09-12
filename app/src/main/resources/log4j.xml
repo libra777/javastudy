@@ -14,7 +14,6 @@
     <logger name="org.application">
         <level value="debug"/>
     </logger>
-
     <!-- 3rdparty Loggers -->
     <logger name="org.springframework.core">
         <level value="info"/>
@@ -39,7 +38,7 @@
 
     <!-- Root Logger -->
     <root>
-        <priority value="info"/>
+        <priority value="warn"/>
         <appender-ref ref="console"/>
     </root>
 

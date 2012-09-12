@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.sun.app</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>app</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>spring</name>
+    <name>app</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +19,21 @@
 
     <dependencies>
 
+        <!-- JSF Dependencies -->
+
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.0.2-b10</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Bean Validation Dependencies -->
 
@@ -58,12 +73,6 @@
             <scope>compile</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
         <!-- Spring Dependencies -->
 
         <dependency>
@@ -126,6 +135,7 @@
             <scope>compile</scope>
         </dependency>
 
+
         <!-- Test Dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -170,19 +180,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jsp_2.2_spec</artifactId>
-            <version>1.1</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_2.5_spec</artifactId>
-            <version>1.2</version>
-        </dependency>
-
     </dependencies>
 
     <repositories>
@@ -204,7 +201,7 @@
     </repositories>
 
     <build>
-        <finalName>spring</finalName>
+        <finalName>spring-jsf-jpa</finalName>
         <plugins>
 
             <!-- Facilitates downloading source and javadoc in Eclipse -->
@@ -225,7 +222,7 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.25</version>
                 <configuration>
-                    <scanIntervalSeconds>50</scanIntervalSeconds>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
                 </configuration>
             </plugin>
 

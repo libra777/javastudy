@@ -11,6 +11,7 @@ import java.util.Date;
  */
 @Entity
 public class Member {
+
     @Id
     @GeneratedValue
     private Integer id;

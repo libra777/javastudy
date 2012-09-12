@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,16 +22,7 @@ public class MemberController {
 
     @Autowired
     private MemberDao memberDao;
-    private Member member;
-    private List<Member> memberList;
 
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
 
     public MemberDao getMemberDao() {
         return memberDao;
@@ -40,44 +32,39 @@ public class MemberController {
         this.memberDao = memberDao;
     }
 
-    public List<Member> getMemberList() {
-        return memberList;
-    }
-
-    public void setMemberList(List<Member> memberList) {
-        this.memberList = memberList;
-    }
 
     @RequestMapping("index")
-    public String index() {
-        memberList = memberDao.getAllWorkingMember();
+    public String index(Model model) {
+        List<Member> memberList = memberDao.getAllWorkingMember();
+        model.addAttribute("memberList", memberList);
         return "/member/list";
     }
 
     @RequestMapping("queryWorkingMember")
-    public String queryWorkingMember() {
-        memberList = memberDao.getAllWorkingMember();
+    public String queryWorkingMember(Model model) {
+        List<Member> memberList = memberDao.getAllWorkingMember();
+        model.addAttribute("memberList", memberList);
         return "/member/list";
     }
 
     @RequestMapping("queryAllMember")
-    public String queryAllMember() {
-        memberList = memberDao.getAllMember();
+    public String queryAllMember(Model model) {
+        List<Member> memberList = memberDao.getAllMember();
+        model.addAttribute("memberList", memberList);
         return "/member/list";
     }
 
     @RequestMapping("save")
-    public String saveMember() {
+    public String saveMember(Model model, Member member) {
         if (member != null)
             memberDao.saveMember(member);
-        memberList = memberDao.getAllWorkingMember();
-        return "/member/list";
+        List<Member> memberList = memberDao.getAllWorkingMember();
+        model.addAttribute("memberList", memberList);
+        return "redirect:/member/index.do";
     }
 
     @RequestMapping("create")
-    public String createNewMember() {
-        member = new Member();
-        logger.info("will create new member");
+    public String createNewMember(Model model) {
         return "/member/member";
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+        <h1>
+            <h:outputText value="Hello From JSF"/>
+        </h1>
+        Message : #{homeBean.message}<br/>
+        <br/>
+
+        <h2>Tasks</h2>
+        <h:form>
+            <table>
+
+                <thead>
+                <tr>姓名</tr>
+                <tr>入厂日期</tr>
+                <tr>工作年限</tr>
+                <tr>离职时间</tr>
+                <tr>分析</tr>
+                </thead>
+                <ui:repeat value="#{taskHome.tasks}" var="v_task">
+                    <tr>
+                        <td>
+                            <input value="#{v_task.id}" type="checkbox"/>
+                            <h:commandLink action="#{taskHome.test}" value="#{v_task.name}">
+
+                            </h:commandLink>
+                        </td>
+                        <td>#{v_task.id}</td>
+                        <td>#{v_task.description}</td>
+                        <td>#{v_task.name}</td>
+                    </tr>
+                </ui:repeat>
+
+            </table>
+
+            <input value="#{taskHome.task.name}"/>
+            <h:commandButton action="#{taskHome.test}" value="Action"></h:commandButton>
+        </h:form>
+        <h:form>
+            <div style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
+                <h:inputText value="#{taskHome.task.description}" id="taskDesc"/>
+                <h:message for="taskDesc" style="color : red;padding-left : 8px"/>
+                <br></br>
+                <h:inputText value="#{taskHome.task.name}" id="taskName"/>
+                <h:message for="taskName" style="color : red;padding-left : 8px"/>
+                <br/>
+                <h:commandButton action="#{taskHome.saveTask}" value="Add"/>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+
+
+        <h1>
+            <h:outputText value="Hello"/>
+        </h1>
+
+        <br/>
+
+        <h2>Member manager</h2>
+        <h:form>
+            <table>
+
+                <thead>
+                <tr>姓名</tr>
+                <tr>入厂日期</tr>
+                <tr>工作年限</tr>
+                <tr>分析</tr>
+                </thead>
+                <tbody>
+
+
+                <ui:repeat value="#{memberController.memberInfos}" var="member">
+                    <tr>
+                        <td>
+                            #{member.name}
+                        </td>
+                        <td>
+                            <h:outputText value="#{v_task.enternDate}">
+                                <f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+                            </h:outputText>
+                        </td>
+                        <td>#{member.workLong}</td>
+                        <td>
+                            <h:commandLink action="#{memberController.test}" value="当前年假">
+
+                            </h:commandLink>
+
+                            <h:commandLink action="#{memberController.test}" value="当前年假">
+
+                            </h:commandLink>
+
+                        </td>
+
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </h:form>
+        <h:form id="memberform">
+            <div style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
+                员工姓名：<h:inputText value="#{memberController.memberInfo.name}" id="membername" name="membername"/>
+                <h:message for="membername" style="color : red;padding-left : 8px"/>
+                <br/>
+                工作年限：<h:inputText value="#{memberController.memberInfo.workLong}" id="workLong"/>
+                <h:message for="workLong" style="color : red;padding-left : 8px"/>
+                <br/>
+
+                入职日期：<h:inputText value="#{memberController.memberInfo.enternDate}" id="enternDate"/>
+                <h:message for="enternDate" style="color : red;padding-left : 8px"/>
+                <br/><br/>
+                <h:commandButton action="#{memberController.saveMember}" value="新增员工信息"/>
+            </div>
+
+        </h:form>
+
+        <script language="JavaScript" type="text/javascript">
+            $(function () {
+                $("#memberform:enternDate").datepicker();
+            });
+        </script>
+    </ui:define>
+</ui:composition>

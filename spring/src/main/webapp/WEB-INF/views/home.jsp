@@ -1,6 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page pageEncoding="utf-8" %>
-<%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="ctx" value="${pageContext.servletContext.contextPath}"></c:set>
+
 <html>
 <head>
     <title>Home</title>
@@ -10,6 +11,6 @@
     Hello world!
 </h1>
 ${controllerMessage}
-<a href="/member/index.htm">员工管理</a>
+<a href="${ctx}/member/index.do">员工管理</a>
 </body>
 </html>
