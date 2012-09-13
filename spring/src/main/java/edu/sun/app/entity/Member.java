@@ -3,7 +3,9 @@ package edu.sun.app.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: sunqipeng
@@ -21,6 +23,16 @@ public class Member {
     private Date enterDate;
     private Date leaveDate;
     private boolean working;
+    @OneToMany(mappedBy = "member")
+    private List<Vacation> vacationList;
+
+    public List<Vacation> getVacationList() {
+        return vacationList;
+    }
+
+    public void setVacationList(List<Vacation> vacationList) {
+        this.vacationList = vacationList;
+    }
 
     public Date getEnterDate() {
         return enterDate;

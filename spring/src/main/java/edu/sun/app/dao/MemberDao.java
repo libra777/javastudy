@@ -44,4 +44,12 @@ public class MemberDao {
         //entityManager.persist(member);
         return member;
     }
+
+    /**
+     * @param id
+     * @return
+     */
+    public Member loadMemberById(String id) {
+        return entityManager.find(Member.class, Integer.parseInt(id));
+    }
 }

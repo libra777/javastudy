@@ -2,13 +2,17 @@ package edu.sun.app.action;
 
 import edu.sun.app.dao.MemberDao;
 import edu.sun.app.entity.Member;
+import edu.sun.app.utils.DateUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -23,7 +27,6 @@ public class MemberController {
     @Autowired
     private MemberDao memberDao;
 
-
     public MemberDao getMemberDao() {
         return memberDao;
     }
@@ -31,7 +34,6 @@ public class MemberController {
     public void setMemberDao(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
-
 
     @RequestMapping("index")
     public String index(Model model) {
@@ -54,17 +56,47 @@ public class MemberController {
         return "/member/list";
     }
 
+    @RequestMapping("updateMember")
+    public String updateMember(@RequestParam("id") String id, Model model) {
+        if (StringUtils.isEmpty(id)) {
+            return queryWorkingMember(model);
+        }
+
+        Member member = memberDao.loadMemberById(id);
+        model.addAttribute("member", member);
+        return "/member/updateMember";
+    }
+
     @RequestMapping("save")
-    public String saveMember(Model model, Member member) {
-        if (member != null)
-            memberDao.saveMember(member);
+    public String saveMember(Model model, HttpServletRequest request) {
+        String id = request.getParameter("id");
+
+        String name = request.getParameter("name");
+        String workLong = request.getParameter("workLong");
+        String enterDate = request.getParameter("enterDate");
+        String memberId = request.getParameter("memberId");
+
+        Member member = new Member();
+
+        if (!StringUtils.isEmpty(id)) {
+            member.setId(Integer.parseInt(id));
+        }
+
+        member.setMemberId(memberId);
+        member.setName(name);
+        member.setWorkLong(Integer.parseInt(workLong));
+        member.setEnterDate(DateUtils.parseDate(enterDate));
+
+        memberDao.saveMember(member);
+
         List<Member> memberList = memberDao.getAllWorkingMember();
+
         model.addAttribute("memberList", memberList);
         return "redirect:/member/index.do";
     }
 
     @RequestMapping("create")
-    public String createNewMember(Model model) {
+    public String createNewMember() {
         return "/member/member";
     }
 }
