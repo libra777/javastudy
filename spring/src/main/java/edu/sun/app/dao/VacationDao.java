@@ -27,10 +27,12 @@ public class VacationDao {
         this.entityManager = entityManager;
     }
 
-    public List<Vacation> listVacationsByMemberId(String memberId, int logYear) {
+
+
+    public List<Vacation> listVacationsByMemberId(String memberId, String logYear) {
 
         Query query = entityManager.
-                createQuery("select  v from Vacation where v.member.memberId=:memberId and v.logYear=:logYear")
+                createQuery("select  v from Vacation v where v.member.memberId=:memberId and v.logYear=:logYear")
                 .setParameter("memberId", memberId)
                 .setParameter("logYear", logYear);
 

@@ -22,7 +22,7 @@ public class MemberDao {
      * @return
      */
     public List<Member> getAllWorkingMember() {
-        return entityManager.createQuery("select m from Member m  order by memberId").getResultList();
+        return entityManager.createQuery("select m from Member m  order by m.memberId").getResultList();
 
     }
 
@@ -30,7 +30,7 @@ public class MemberDao {
      * @return
      */
     public List<Member> getAllMember() {
-        return entityManager.createQuery("select m from Member m order by memberId").getResultList();
+        return entityManager.createQuery("select m from Member m order by m.memberId").getResultList();
     }
 
 
@@ -46,10 +46,13 @@ public class MemberDao {
     }
 
     /**
-     * @param id
+     * @param memberId
      * @return
      */
-    public Member loadMemberById(String id) {
-        return entityManager.find(Member.class, Integer.parseInt(id));
+    public Member loadMemberById(String memberId) {
+        List<Member> members = entityManager.createQuery("select m from Member  m where m.memberId=:memberId").setParameter("memberId", memberId).getResultList();
+        if (members == null || members.size() == 0)
+            return null;
+        return members.get(0);
     }
 }

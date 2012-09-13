@@ -57,7 +57,7 @@ public class MemberController {
     }
 
     @RequestMapping("updateMember")
-    public String updateMember(@RequestParam("id") String id, Model model) {
+    public String updateMember(@RequestParam("memberId") String id, Model model) {
         if (StringUtils.isEmpty(id)) {
             return queryWorkingMember(model);
         }

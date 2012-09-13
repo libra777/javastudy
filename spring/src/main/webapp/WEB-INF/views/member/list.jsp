@@ -23,7 +23,7 @@
     <c:forEach items="${memberList}" var="m">
         <tr>
             <td>
-                <a href="${ctx}/member/updateMember.do?id=${m.id}">${m.memberId}</a>
+                <a href="${ctx}/member/updateMember.do?memberId=${m.memberId}">${m.memberId}</a>
             </td>
             <td>
                     ${m.name}
@@ -35,7 +35,7 @@
                     ${m.enterDate}
             </td>
             <td>
-                <a href="">年假信息</a>
+                <a href="${ctx}/vacation/list.do?memberId=${m.memberId}">年假信息</a>
             </td>
 
         </tr>

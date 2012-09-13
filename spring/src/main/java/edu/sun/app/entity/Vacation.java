@@ -19,18 +19,18 @@ public class Vacation {
     private String desc;
     private Date logDate;
     private String logYear;
-    private int days;
-
-    public int getDays() {
-        return days;
-    }
-
-    public void setDays(int days) {
-        this.days = days;
-    }
+    private float days;
 
     @ManyToOne
     private Member member;
+
+    public float getDays() {
+        return days;
+    }
+
+    public void setDays(float days) {
+        this.days = days;
+    }
 
 
     public String getDesc() {

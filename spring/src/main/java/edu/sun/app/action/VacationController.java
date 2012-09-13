@@ -19,6 +19,7 @@ import java.util.List;
  * Date: 12-9-13
  */
 @Controller
+@RequestMapping("/vacation")
 public class VacationController {
     @Autowired
     VacationDao vacationDao;
@@ -30,13 +31,17 @@ public class VacationController {
     public String list(@RequestParam("memberId") String id, Model model) {
 
         int currentYear = DateUtils2.getCurrentYear();
-        List<Vacation> vacations = vacationDao.listVacationsByMemberId(id, currentYear);
+        List<Vacation> vacations = vacationDao.listVacationsByMemberId(id, String.valueOf(currentYear));
 
         int sumVacation = 0;
         for (Vacation vacation : vacations) {
             sumVacation += vacation.getDays();
         }
         Member member = memberDao.loadMemberById(id);
+
+        if (member == null) {
+            return "redirect:/member/list.do";
+        }
 
         int leftVacation = VacationUtils.calculateMemberVacation(member, sumVacation);
 

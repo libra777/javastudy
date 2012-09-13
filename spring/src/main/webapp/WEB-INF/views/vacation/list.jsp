@@ -33,7 +33,7 @@
         </td>
 
         <td>
-            ${member.worlLong}
+            ${member.workLong}
         </td>
     </tr>
 </table>
@@ -41,6 +41,7 @@
 <hr>
 
 当年请假信息
+
 <table>
     <tr>
         <td>请假时间</td>
@@ -50,7 +51,7 @@
 
     </tr>
 
-    <c:forEach items="vacations" var="v">
+    <c:forEach items="${vacations}" var="v">
         <tr>
             <td>
                     ${v.name}
@@ -71,9 +72,10 @@
         </tr>
     </c:forEach>
 
-    本年度应有年假天数:${originalVacation},本年度剩余年假天数${leftVacation},本年度合计请假天数${sumRequiredVacations}
-</table>
 
+</table>
+<hr>
+本年度应有年假天数:${originalVacation},本年度剩余年假天数${leftVacation},本年度合计请假天数${sumRequiredVacations}
 
 </body>
 </html>
