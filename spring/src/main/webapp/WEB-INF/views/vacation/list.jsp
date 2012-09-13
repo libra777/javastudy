@@ -38,44 +38,49 @@
     </tr>
 </table>
 
-<hr>
+<c:if test="${not empty vacations}">
+    <hr>
 
-当年请假信息
 
-<table>
-    <tr>
-        <td>请假时间</td>
-        <td>所属年份</td>
-        <td>请假天数</td>
-        <td>请假事由</td>
+    当年请假信息
 
-    </tr>
-
-    <c:forEach items="${vacations}" var="v">
+    <table>
         <tr>
-            <td>
-                    ${v.name}
-            </td>
+            <td>请假时间</td>
+            <td>所属年份</td>
+            <td>请假天数</td>
+            <td>请假事由</td>
 
-
-            <td>
-                    ${v.logDate}
-            </td>
-
-            <td>
-                    ${v.logYear}
-            </td>
-
-            <td>
-                    ${v.desc}
-            </td>
         </tr>
-    </c:forEach>
+
+        <c:forEach items="${vacations}" var="v">
+            <tr>
+                <td>
+                        ${v.name}
+                </td>
 
 
-</table>
+                <td>
+                        ${v.logDate}
+                </td>
+
+                <td>
+                        ${v.logYear}
+                </td>
+
+                <td>
+                        ${v.desc}
+                </td>
+            </tr>
+        </c:forEach>
+
+
+    </table>
+</c:if>
 <hr>
 本年度应有年假天数:${originalVacation},本年度剩余年假天数${leftVacation},本年度合计请假天数${sumRequiredVacations}
 
+<hr>
+<jsp:include page="vacationForm.jsp"></jsp:include>
 </body>
 </html>

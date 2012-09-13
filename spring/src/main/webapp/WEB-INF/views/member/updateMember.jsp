@@ -8,13 +8,19 @@
     <jsp:include page="../include/common.jsp"></jsp:include>
     <script type="text/javascript">
         $(function () {
-            $("#enterDate").datepicker({dateFormat: "yy-mm-dd"});
+            $("#enterDate").datepicker({dateFormat:"yy-mm-dd"});
+            $("#memberForm").validate();
+            $("#name").rules("add", {required:true, minlength:2, maxlength:10});
+            $("#memberId").rules("add", {required:true, digits:true});
+            $("#workLong").rules("add", {required:true, digits:true, min:0, max:30});
+            $("#enterDate").rules("add", {required:true, minlength:2, maxlength:10});
         });
+
     </script>
 </head>
 <body>
 
-<form action="${ctx}/member/save.do" method="post">
+<form action="${ctx}/member/save.do" method="post" id="memberForm">
     <input type="hidden" value="${member.id}" name="id">
     <jsp:include page="memberForm.jsp"></jsp:include>
     <input type="submit" value="保存员工信息">
