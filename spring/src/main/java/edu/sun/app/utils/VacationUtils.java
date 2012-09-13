@@ -2,6 +2,9 @@ package edu.sun.app.utils;
 
 import edu.sun.app.entity.Member;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * User: sunqipeng
  * Date: 12-9-13
@@ -17,7 +20,6 @@ public class VacationUtils {
      */
     public static int calculateMemberVacation(Member member, int vacationDays) {
         return originalMemberVacation(member) - vacationDays;
-
     }
 
     /**
@@ -30,7 +32,7 @@ public class VacationUtils {
         int days = 0;
         int workLongType = -1;
         if (member.getWorkLong() < 1) {
-            days = 0;
+            days = 5;
             workLongType = 1;
         }
         if (member.getWorkLong() >= 1 && member.getWorkLong() < 10) {
@@ -47,48 +49,59 @@ public class VacationUtils {
         }
 
 
+        int pastedYear = DateUtils2.pastedYears(member);
+        int companyVacation = 0;
         if (workLongType == 1) {
-            days += 0;
+            companyVacation = 3;
         }
         if (workLongType == 2) {
-            int pastedYear = DateUtils.pastedYears(member);
+
             if (pastedYear == 1) {
-                days += 3;
+                companyVacation = 3;
             }
             if (pastedYear == 2) {
-                days += 4;
+                companyVacation = 4;
             }
             if (pastedYear == 3) {
-                days += 5;
+                companyVacation = 5;
             }
             if (pastedYear == 4) {
-                days += 7;
+                companyVacation = 7;
             }
             if (pastedYear == 5) {
-                days += 9;
+                companyVacation = 9;
             }
             if (pastedYear >= 6) {
-                days += 10;
+                companyVacation = 10;
             }
 
 
         }
 
-        if (workLongType == 2) {
-            int pastedYear = DateUtils.pastedYears(member);
+        if (workLongType == 3) {
 
             if (pastedYear == 4) {
-                days += 2;
+                companyVacation = 2;
             }
             if (pastedYear == 5) {
-                days += 4;
+                companyVacation = 4;
             }
             if (pastedYear >= 6) {
-                days += 5;
+                companyVacation = 5;
             }
 
         }
-        return days;
 
+        if (isEnterInThisYear(member.getEnterDate())) {
+            return (days * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365 + (companyVacation * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365;
+        }
+        return days + companyVacation;
+    }
+
+    private static boolean isEnterInThisYear(Date enterDate) {
+        Calendar calendar = Calendar.getInstance();
+        Calendar calendar1 = Calendar.getInstance();
+        calendar.setTime(enterDate);
+        return calendar.get(Calendar.YEAR) == calendar1.get(Calendar.YEAR);
     }
 }

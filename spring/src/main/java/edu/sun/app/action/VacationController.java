@@ -4,7 +4,7 @@ import edu.sun.app.dao.MemberDao;
 import edu.sun.app.dao.VacationDao;
 import edu.sun.app.entity.Member;
 import edu.sun.app.entity.Vacation;
-import edu.sun.app.utils.DateUtils;
+import edu.sun.app.utils.DateUtils2;
 import edu.sun.app.utils.VacationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,7 @@ public class VacationController {
     @RequestMapping("list")
     public String list(@RequestParam("memberId") String id, Model model) {
 
-        int currentYear = DateUtils.getCurrentYear();
+        int currentYear = DateUtils2.getCurrentYear();
         List<Vacation> vacations = vacationDao.listVacationsByMemberId(id, currentYear);
 
         int sumVacation = 0;

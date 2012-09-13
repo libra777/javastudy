@@ -1,14 +1,22 @@
 package edu.sun.app.test;
 
-import java.util.Calendar;
+import edu.sun.app.entity.Member;
+import edu.sun.app.utils.VacationUtils;
+import org.apache.commons.lang3.time.DateUtils;
+
+import java.text.ParseException;
 
 /**
  * User: sunqipeng
  * Date: 12-9-13
  */
 public class Test {
-    public static void main(String[] args) {
-        Calendar calendar = Calendar.getInstance();
-        System.out.println(calendar.get(Calendar.YEAR));
+    public static void main(String[] args) throws ParseException {
+        Member member = new Member();
+
+
+        member.setEnterDate(DateUtils.parseDate("2002-11-01", "yyyy-MM-dd"));
+        member.setWorkLong(6);
+        System.out.println(VacationUtils.originalMemberVacation(member));
     }
 }

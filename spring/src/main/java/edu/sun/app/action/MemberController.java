@@ -2,7 +2,7 @@ package edu.sun.app.action;
 
 import edu.sun.app.dao.MemberDao;
 import edu.sun.app.entity.Member;
-import edu.sun.app.utils.DateUtils;
+import edu.sun.app.utils.DateUtils2;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +85,7 @@ public class MemberController {
         member.setMemberId(memberId);
         member.setName(name);
         member.setWorkLong(Integer.parseInt(workLong));
-        member.setEnterDate(DateUtils.parseDate(enterDate));
+        member.setEnterDate(DateUtils2.parseDate(enterDate));
 
         memberDao.saveMember(member);
 
