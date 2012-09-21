@@ -92,9 +92,9 @@ public class VacationUtils {
 
         }
 
-        if (isEnterInThisYear(member.getEnterDate())) {
-            return (days * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365 + (companyVacation * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365;
-        }
+//        if (isEnterInThisYear(member.getEnterDate())) {
+//            return (days * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365 + (companyVacation * DateUtils2.getDayBeforeYearEnd(member.getEnterDate())) / 365;
+//        }
         return days + companyVacation;
     }
 

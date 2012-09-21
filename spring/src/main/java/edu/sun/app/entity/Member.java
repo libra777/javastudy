@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,8 +19,7 @@ public class Member {
     private String name;
     private String memberId;
     private int workLong;
-    private Date enterDate;
-    private Date leaveDate;
+
     private boolean working;
     @OneToMany(mappedBy = "member")
     private List<Vacation> vacationList;
@@ -34,28 +32,12 @@ public class Member {
         this.vacationList = vacationList;
     }
 
-    public Date getEnterDate() {
-        return enterDate;
-    }
-
-    public void setEnterDate(Date enterDate) {
-        this.enterDate = enterDate;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Date getLeaveDate() {
-        return leaveDate;
-    }
-
-    public void setLeaveDate(Date leaveDate) {
-        this.leaveDate = leaveDate;
     }
 
     public String getMemberId() {

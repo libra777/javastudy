@@ -2,7 +2,6 @@ package edu.sun.app.test;
 
 import edu.sun.app.entity.Member;
 import edu.sun.app.utils.VacationUtils;
-import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 
@@ -15,7 +14,7 @@ public class Test {
         Member member = new Member();
 
 
-        member.setEnterDate(DateUtils.parseDate("2002-11-01", "yyyy-MM-dd"));
+        //member.setEnterDate(DateUtils.parseDate("2002-11-01", "yyyy-MM-dd"));
         member.setWorkLong(6);
         System.out.println(VacationUtils.originalMemberVacation(member));
     }

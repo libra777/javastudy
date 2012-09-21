@@ -2,13 +2,13 @@ package edu.sun.app.action;
 
 import edu.sun.app.dao.MemberDao;
 import edu.sun.app.entity.Member;
-import edu.sun.app.utils.DateUtils2;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -68,9 +68,10 @@ public class MemberController {
     }
 
     @RequestMapping("save")
-    public String saveMember(Model model, HttpServletRequest request) {
+    public String saveMember(Model model, HttpServletRequest request, @ModelAttribute("member") Member m) {
         String id = request.getParameter("id");
 
+        System.out.println(m);
         String name = request.getParameter("name");
         String workLong = request.getParameter("workLong");
         String enterDate = request.getParameter("enterDate");
@@ -85,7 +86,7 @@ public class MemberController {
         member.setMemberId(memberId);
         member.setName(name);
         member.setWorkLong(Integer.parseInt(workLong));
-        member.setEnterDate(DateUtils2.parseDate(enterDate));
+        //member.setEnterDate(DateUtils2.parseDate(enterDate));
 
         memberDao.saveMember(member);
 

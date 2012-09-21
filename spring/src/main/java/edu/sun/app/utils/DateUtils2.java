@@ -70,7 +70,7 @@ public class DateUtils2 {
     public static int pastedYears(Member member, Date beginDate) {
 
         Calendar enter = Calendar.getInstance();
-        enter.setTime(member.getEnterDate());
+        //enter.setTime(member.getEnterDate());
 
         Calendar from = Calendar.getInstance();
         from.setTime(beginDate);
