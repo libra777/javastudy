@@ -14,6 +14,6 @@ public class SpringController {
     @RequestMapping("index")
     public String index() {
         System.out.println("this is the function invoke");
-        return "/spring/index";
+        return "/index";
     }
 }

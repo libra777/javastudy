@@ -25,9 +25,9 @@
     <body>
     <!-- Begin #header -->
     <div id="header">
-        <h1>Sleek Admin</h1>
+        <h1>#{applicationBean.applicationName}</h1>
 
-        <p>Welcome back, John.</p>
+        <p>Welcome back, #{sessionBean.logInUser.name}.</p>
 
         <div id="fav_actions">
             <ul id="quicklinks">
