@@ -1,4 +1,4 @@
-package edu.sun.app.framework;
+package edu.sun.app.framework.mbean;
 
 import edu.sun.app.entity.LogInUser;
 import org.springframework.context.annotation.Scope;

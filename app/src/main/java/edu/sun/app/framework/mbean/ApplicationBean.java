@@ -1,4 +1,4 @@
-package edu.sun.app.framework;
+package edu.sun.app.framework.mbean;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
