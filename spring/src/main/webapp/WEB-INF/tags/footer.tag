@@ -1,1 +1,0 @@
-<span id="footer">spring by <a href="http://www.highwise.com">Highwise</a></span>
