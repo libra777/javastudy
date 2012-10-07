@@ -2,6 +2,13 @@ $(document).ready(function () {
 
     $('body').addClass('jquery');
 
+    $("#JqueryMenu").navPlugin({
+        'itemWidth':120,
+        'itemHeight':30,
+        'navEffect':"fade",
+        'speed':500
+    });
+
     $('textarea.markitup').markItUp({
         onShiftEnter:{keepDefault:false, replaceWith:'<br />\n'},
         onCtrlEnter:{keepDefault:false, openWith:'\n<p>', closeWith:'</p>'},
