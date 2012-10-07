@@ -33,7 +33,7 @@
 
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.json</url-pattern>
     </servlet-mapping>
 
     <context-param>
