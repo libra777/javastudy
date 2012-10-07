@@ -7,7 +7,9 @@
 
 
     <ui:define name="content">
-        <h1><h:outputText value="Hello From JSF"/></h1>
+        <h1>
+            <h:outputText value="Hello From JSF"/>
+        </h1>
         Message : #{homeBean.message}<br/>
         <br/>
 
@@ -31,8 +33,9 @@
         </h:form>
 
         <h:form>
-            <h:outputLabel for="uname" value="名称"></h:outputLabel> <h:inputText id="uname"
-                                                                                value="#{example.name}"></h:inputText>
+            <h:outputLabel for="uname" value="名称"></h:outputLabel>
+            <h:inputText id="uname"
+                         value="#{example.name}"></h:inputText>
             <h:commandButton action="#{example.hello}" value="Action">
                 <f:ajax execute="uname" render="distable address"></f:ajax>
             </h:commandButton>
