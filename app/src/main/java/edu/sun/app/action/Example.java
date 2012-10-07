@@ -1,5 +1,10 @@
 package edu.sun.app.action;
 
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.web.filter.authc.UserFilter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -38,6 +43,21 @@ public class Example {
     public String address;
 
     public void hello() {
+
+        UserFilter userFilter;
+        Realm realm = new Realm() {
+            public String getName() {
+                return null;  //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            public boolean supports(AuthenticationToken token) {
+                return false;  //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+                return null;  //To change body of implemented methods use File | Settings | File Templates.
+            }
+        };
         if (StringUtils.hasText(name)) {
             this.names.add(name);
         }
