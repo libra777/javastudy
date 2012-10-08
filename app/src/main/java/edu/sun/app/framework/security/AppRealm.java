@@ -1,4 +1,4 @@
-package edu.sun.app.framework.mbean.security;
+package edu.sun.app.framework.security;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
