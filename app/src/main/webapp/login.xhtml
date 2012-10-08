@@ -17,15 +17,24 @@
 </h:head>
 <h:body>
 
-    <div style="margin: 0px auto">
+    <div style="margin-left: auto;margin-right: auto;width: 500px">
         <h:form>
             <h1>#{applicationBean.applicationName}</h1>
 
-            <p><input type="text" class="login-field text" name="username" placeholder="Username"/></p>
-
-            <p><input type="password" class="login-field password" name="password" placeholder="Password"/></p>
-
-            <p><h:commandButton styleClass="login-submit" action="#{loginBean.login}" value="Log in"></h:commandButton>
+            <div style="width: 100%">
+                <p>
+                    <input type="text" id="username" class="login-field text" name="username"
+                           placeholder="#{messages.label_username}"/>
+                </p>
+            </div>
+            <div style="width: 100%">
+                <p>
+                    <input type="password" id="password" class="login-field password" name="password"
+                           placeholder="#{messages.label_password}"/></p>
+            </div>
+            <p>
+                <h:commandButton styleClass="login-submit"
+                                 action="#{loginBean.login}" value="#{messages.button_login}"></h:commandButton>
             </p>
         </h:form>
     </div>
