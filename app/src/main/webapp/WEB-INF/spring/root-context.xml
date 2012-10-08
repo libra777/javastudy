@@ -29,7 +29,7 @@
 
                 # some example chain definitions:
                 /javax.faces.resource/**=anon
-
+                /**/*.ico=anon
                 /admin/** = authc, roles[admin]
                 /docs/** = authc, perms[document:read]
                 /** = authc

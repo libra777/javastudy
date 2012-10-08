@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginBean {
 
+
     private static Logger logger = LoggerFactory.getLogger(LoginBean.class);
 
     private String username;
@@ -38,5 +39,11 @@ public class LoginBean {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return "/login";
+    }
+
+
+    public String login() {
+        logger.info("user login " + SecurityUtils.getSubject());
+        return "/home";
     }
 }

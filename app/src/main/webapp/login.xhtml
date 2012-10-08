@@ -15,17 +15,19 @@
     <h:outputScript library="javascript" name="function.js" target="head"></h:outputScript>
 
 </h:head>
-<h:body class="login">
+<h:body>
 
-    <h:form>
-        <h1>#{applicationBean.applicationName}</h1>
+    <div style="margin: 0px auto">
+        <h:form>
+            <h1>#{applicationBean.applicationName}</h1>
 
-        <p><input type="text" class="login-field text" name="username" placeholder="Username"/></p>
+            <p><input type="text" class="login-field text" name="username" placeholder="Username"/></p>
 
-        <p><input type="password" class="login-field password" name="password" placeholder="Password"/></p>
+            <p><input type="password" class="login-field password" name="password" placeholder="Password"/></p>
 
-        <p><h:commandButton styleClass="login-submit" value="Log in"></h:commandButton></p>
-    </h:form>
-
+            <p><h:commandButton styleClass="login-submit" action="#{loginBean.login}" value="Log in"></h:commandButton>
+            </p>
+        </h:form>
+    </div>
 </h:body>
 </html>
