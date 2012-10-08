@@ -234,7 +234,7 @@
     </repositories>
 
     <build>
-        <finalName>spring-jsf-jpa</finalName>
+        <finalName>app</finalName>
         <plugins>
             <!-- Facilitates downloading source and javadoc in Eclipse -->
             <plugin>
