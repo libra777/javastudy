@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <input type="text" name="username"></input>
+            <input type="password" name="password"></input>
+            <h:commandButton value="登陆" action="#{loginBean.login}"></h:commandButton>
+        </h:form>
+    </ui:define>
+</ui:composition>

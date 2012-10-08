@@ -9,4 +9,40 @@
     <context:component-scan base-package="edu.sun.app"/>
     <import resource="db.xml"/>
 
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- override these for application-specific URLs if you like:-->
+        <property name="loginUrl" value="/login.htm"/>
+        <property name="successUrl" value="/home.htm"/>
+        <property name="unauthorizedUrl" value="/unauthorized.htm"/>
+        <!-- -->
+        <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean  -->
+        <!-- defined will be automatically acquired and available via its beanName in chain        -->
+        <!-- definitions, but you can perform instance overrides or name aliases here if you like: -->
+        <!-- <property name="filters">
+           <util:map>
+               <entry key="anAlias" value-ref="someFilter"/>
+           </util:map>
+       </property> -->
+        <property name="filterChainDefinitions">
+            <value>
+
+                # some example chain definitions:
+                /javax.faces.resource/**=anon
+
+                /admin/** = authc, roles[admin]
+                /docs/** = authc, perms[document:read]
+                /** = authc
+                # more URL-to-FilterChain definitions here
+            </value>
+        </property>
+    </bean>
+
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <bean id="myRealm" class="edu.sun.app.framework.security.AppRealm"></bean>
 </beans>

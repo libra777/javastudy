@@ -32,9 +32,12 @@
 
         <div id="fav_actions">
             <ul id="quicklinks">
-                <li id="inbox_link" class="icon-link"><a href="#">Inbox</a></li>
-                <li id="profile_link" class="icon-link"><a href="#">Profile</a></li>
-                <li id="logout_link" class="icon-link"><a href="#">Logout</a></li>
+                <h:form>
+                    <li id="inbox_link" class="icon-link"><a href="#">Inbox</a></li>
+                    <li id="profile_link" class="icon-link"><a href="#">Profile</a></li>
+                    <li id="logout_link" class="icon-link"><h:commandLink
+                            action="#{loginBean.logout}">Logout</h:commandLink></li>
+                </h:form>
             </ul>
             <!--
             <form action="" id="search" method="POST">
