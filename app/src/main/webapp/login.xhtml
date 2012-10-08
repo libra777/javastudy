@@ -1,13 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                template="/WEB-INF/templates/template.xhtml">
-    <ui:define name="content">
-        <h:form>
-            <input type="text" name="username"></input>
-            <input type="password" name="password"></input>
-            <h:commandButton value="登陆" action="#{loginBean.login}"></h:commandButton>
-        </h:form>
-    </ui:define>
-</ui:composition>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Logged In</title>
+
+    <h:outputStylesheet name="css/style.css"/>
+    <h:outputStylesheet name="css/login.css"/>
+    <h:outputScript library="javascript" name="jquery.min.js" target="head"></h:outputScript>
+    <h:outputScript library="javascript" name="jquery.markitup.js" target="head"></h:outputScript>
+    <h:outputScript library="javascript" name="jquery.tablesorter.min.js" target="head"></h:outputScript>
+    <h:outputScript library="javascript" name="nav2.0.js" target="head"></h:outputScript>
+    <h:outputScript library="javascript" name="function.js" target="head"></h:outputScript>
+
+</h:head>
+<h:body class="login">
+
+    <h:form>
+        <h1>#{applicationBean.applicationName}</h1>
+
+        <p><input type="text" class="login-field text" name="username" placeholder="Username"/></p>
+
+        <p><input type="password" class="login-field password" name="password" placeholder="Password"/></p>
+
+        <p><h:commandButton styleClass="login-submit" value="Log in"></h:commandButton></p>
+    </h:form>
+
+</h:body>
+</html>
